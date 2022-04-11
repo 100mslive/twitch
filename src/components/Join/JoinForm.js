@@ -17,13 +17,14 @@ const JoinForm = ({ handleStart }) => {
 
     getToken(role)
       .then((token) => {
+        console.log(process.env.REACT_APP_HMS_INIT_PEER_ENPOINT);
         hmsActions.join({
           userName: userName || 'Anonymous',
           authToken: token,
           settings: {
             isAudioMuted: true,
           },
-          initEndPoint: process.env.REACT_APP_HMS_INIT_PEER_ENPOINT || undefined
+          initEndpoint: process.env.REACT_APP_HMS_INIT_PEER_ENPOINT || undefined
         });
       })
       .catch((error) => {
